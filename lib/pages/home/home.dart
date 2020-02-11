@@ -1,6 +1,4 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 import 'map_widget.dart';
 import 'drawer_widget.dart';
 
@@ -10,16 +8,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  File _image;
-
-  Future getImage() async {
-    var image = await ImagePicker.pickImage(source: ImageSource.camera);
-
-    setState(() {
-      _image = image;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
           FloatingActionButton(
             heroTag: 'btn2',
             onPressed: () {
-              Navigator.pushNamed(context, '/pictureScanner');
+              Navigator.pushNamed(context, '/camera');
             },
             child: Icon(Icons.photo_camera),
           ),
