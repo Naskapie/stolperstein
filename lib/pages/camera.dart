@@ -22,12 +22,14 @@ class _CameraPageState extends State<CameraPage> {
         setState(() {});
       });
     });
+    print('1 PRINT $_controller');
   }
 
   @override
   void dispose() {
     _controller?.dispose();
     super.dispose();
+    print('2 PRINT $_controller');
   }
 
   @override
