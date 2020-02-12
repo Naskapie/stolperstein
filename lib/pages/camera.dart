@@ -1,4 +1,4 @@
-import 'dart:async';
+import 'package:Stolperstein/services/camera_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 
@@ -8,48 +8,52 @@ class CameraPage extends StatefulWidget {
 }
 
 class _CameraPageState extends State<CameraPage> {
-  CameraController controller;
+  CameraController _controller;
 
   @override
   void initState() {
     super.initState();
-    initializeCamera();
-    controller = CameraController(cameras[0], ResolutionPreset.medium);
-    controller.initialize().then(
-      (_) {
+    CameraUtils.init().then((cameras) {
+      _controller = CameraController(cameras.first, ResolutionPreset.medium);
+      _controller.initialize().then((_) {
         if (!mounted) {
           return;
         }
         setState(() {});
-      },
-    );
+      });
+    });
   }
 
   @override
   void dispose() {
-    controller?.dispose();
+    _controller?.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    if (!controller.value.isInitialized) {
-      return Container();
-    }
-    return AspectRatio(
-        aspectRatio: controller.value.aspectRatio,
-        child: CameraPreview(controller));
-  }
-}
+    final size = MediaQuery.of(context).size;
+    final deviceRatio = size.width / size.height;
 
-List<CameraDescription> cameras = [];
+    return Scaffold(
+      body: Stack(
+        children: <Widget>[
+          _controller.value.isInitialized
+              ? Transform.scale(
+                  scale: _controller.value.aspectRatio / deviceRatio,
+                  child: Center(
+                    child: AspectRatio(
+                      child: CameraPreview(_controller),
+                      aspectRatio: _controller.value.aspectRatio,
+                    ),
+                  ),
+                )
+              : Container(),
+        ],
+      ),
+    );
 
-Future<void> initializeCamera() async {
-  // Fetch the available cameras before initializing the app.
-  try {
-    WidgetsFlutterBinding.ensureInitialized();
-    cameras = await availableCameras();
-  } on CameraException catch (e) {
-    print(e.description);
+    floatingActionButton:
+    FloatingActionButton(onPressed: () {});
   }
 }

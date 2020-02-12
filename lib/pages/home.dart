@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'map_widget.dart';
-import 'drawer_widget.dart';
+
+import 'package:Stolperstein/widgets/map_widget.dart';
+import 'package:Stolperstein/widgets/drawer_widget.dart';
 
 class MyHomePage extends StatefulWidget {
   @override
