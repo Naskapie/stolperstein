@@ -1,6 +1,6 @@
 # Stolperstein App
 
-![stolperstein](./images/stolperstein.png "Stolperstein")
+![stolperstein](./images/stolperstein_mini.png "Stolperstein")
 <br />
 
 A new Flutter project.
@@ -11,7 +11,9 @@ A new Flutter project.
   - [camera](https://pub.dartlang.org/packages/camera)
   - [path_provider](https://pub.dartlang.org/packages/path_provider)
   - [url_launcher](https://pub.dartlang.org/packages/url_launcher)
-
+  - [latlong](https://pub.dev/packages/latlong)
+  - [flutter_map](https://pub.dev/packages/flutter_map)
+  - [user_location](https://pub.dev/packages/user_location)
 
 ## Getting Started
 

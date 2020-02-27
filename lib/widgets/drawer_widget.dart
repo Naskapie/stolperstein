@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class NavDrawer extends StatelessWidget {
-  final drawerHeader = UserAccountsDrawerHeader(
+  final UserAccountsDrawerHeader drawerHeader = const UserAccountsDrawerHeader(
     accountName: Text('OSM Username'),
     accountEmail: Text('user.name@email.com'),
     currentAccountPicture: CircleAvatar(
@@ -21,30 +21,30 @@ class NavDrawer extends StatelessWidget {
               children: <Widget>[
                 ListTile(
                   leading: Icon(Icons.account_circle),
-                  title: Text('Profile'),
+                  title: const Text('Profile'),
                   onTap: () {
                     Navigator.pushNamed(context, '/profile');
                   },
                 ),
                 ListTile(
                   leading: Icon(Icons.settings),
-                  title: Text('Settings'),
+                  title: const Text('Settings'),
                   onTap: () {
                     Navigator.pushNamed(context, '/settings');
                   },
                 ),
                 ListTile(
                   leading: Icon(Icons.lightbulb_outline),
-                  title: Text('Credits'),
+                  title: const Text('Credits'),
                   onTap: () {
                     Navigator.pushNamed(context, '/credits');
                   },
                 ),
                 ListTile(
                   leading: Icon(Icons.crop_square),
-                  title: Text('About Stolpersteine'),
+                  title: const Text('About Stolpersteine'),
                   onTap: () async {
-                    final url = 'http://www.stolpersteine.eu/en/';
+                    const String url = 'http://www.stolpersteine.eu/en/';
                     if (await canLaunch(url)) {
                       await launch(
                         url,
@@ -61,9 +61,9 @@ class NavDrawer extends StatelessWidget {
               alignment: Alignment.bottomCenter,
               child: ListTile(
                 leading: Icon(Icons.exit_to_app),
-                title: Text('Authorise OSM access'),
+                title: const Text('Authorise OSM access'),
                 onTap: () async {
-                  final url = 'https://www.openstreetmap.org/login';
+                  const String url = 'https://www.openstreetmap.org/login';
                   if (await canLaunch(url)) {
                     await launch(
                       url,

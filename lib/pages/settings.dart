@@ -5,14 +5,14 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Settings'),
+        title: const Text('Settings'),
       ),
       body: Center(
         child: ListView(
           children: <Widget>[
             ListTile(
               leading: Icon(Icons.account_circle),
-              title: Text('Storage'),
+              title: const Text('Storage'),
               onTap: () {
                 // Navigator.pushNamed();
                 Navigator.pop(context);
@@ -20,14 +20,14 @@ class SettingsPage extends StatelessWidget {
             ),
             ListTile(
               leading: Icon(Icons.settings),
-              title: Text('Map'),
+              title: const Text('Map'),
               onTap: () {
                 Navigator.pop(context);
               },
             ),
             ListTile(
               leading: Icon(Icons.info_outline),
-              title: Text('Select theme'),
+              title: const Text('Select theme'),
               onTap: () {
                 Navigator.pop(context);
               },

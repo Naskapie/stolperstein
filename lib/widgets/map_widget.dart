@@ -12,14 +12,15 @@ class MapWidget extends StatefulWidget {
 }
 
 class _MapWidgetState extends State<MapWidget> {
-  MapController _mapController = MapController();
-  List<Marker> _markers = [];
-  StreamController<LatLng> _markerlocationStream = StreamController.broadcast();
+  final MapController _mapController = MapController();
+  final List<Marker> _markers = [];
+  final StreamController<LatLng> _markerlocationStream =
+      StreamController.broadcast();
   UserLocationOptions userLocationOptions;
 
   @override
   Widget build(BuildContext context) {
-    _markerlocationStream.stream.listen((onData) {});
+    _markerlocationStream.stream.listen((LatLng onData) {});
 
     userLocationOptions = UserLocationOptions(
         moveToCurrentLocationFloatingActionButton: FloatingActionButton(
@@ -30,7 +31,7 @@ class _MapWidgetState extends State<MapWidget> {
         mapController: _mapController,
         markers: _markers,
         onLocationUpdate: (LatLng pos) =>
-            print("onLocationUpdate ${pos.toString()}"),
+            print('onLocationUpdate ${pos.toString()}'),
         updateMapLocationOnPositionChange: false,
         showMoveToCurrentLocationFloatingActionButton: false,
         zoomToCurrentLocationOnLoad: true,
@@ -60,5 +61,6 @@ class _MapWidgetState extends State<MapWidget> {
     );
   }
 
+  @override
   void dispose() => _markerlocationStream.close();
 }
