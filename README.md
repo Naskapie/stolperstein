@@ -3,7 +3,7 @@
 ![stolperstein](./images/stolperstein_mini.png "Stolperstein")
 <br />
 
-A new Flutter project.
+Pattern Recognition App for the detection of "Stolpersteine"
 
 ## Built With
 

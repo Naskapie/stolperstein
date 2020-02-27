@@ -77,3 +77,6 @@ lib/services/config.dart
 android/app/google-services.json
 ios/Runner/GoogleService-Info.plist
 lib/pages/picture_scanner/CameraHomeScreen.dart
+lib/pages/picture_scanner/picture_scanner.dart
+lib/pages/picture_scanner/detector_painters.dart
+lib/pages/picture_scanner/picture_scanner.dart

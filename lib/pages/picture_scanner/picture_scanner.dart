@@ -70,7 +70,7 @@ class _PictureScannerState extends State<PictureScanner> {
 
     setState(() {
       _scanResults = results;
-      print("_scanResults ${_scanResults.toString()}");
+      print('_scanResults ${_scanResults.toString()}');
     });
   }
 
@@ -134,7 +134,7 @@ class _PictureScannerState extends State<PictureScanner> {
   Widget _buildTextRow(text) {
     return ListTile(
       title: Text(
-        "$text",
+        '$text',
       ),
       dense: true,
     );
