@@ -13,7 +13,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Stolperstein'),
+        title: const Text('Stolperstein'),
         actions: <Widget>[
           PopupMenuButton(
             icon: Icon(Icons.layers),
@@ -39,7 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
         mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
           Padding(
-            padding: EdgeInsets.only(bottom: 10),
+            padding: const EdgeInsets.only(bottom: 10),
             child: FloatingActionButton(
               tooltip: 'Location',
               heroTag: 'btn1',

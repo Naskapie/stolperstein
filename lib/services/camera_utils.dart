@@ -1,17 +1,10 @@
 import 'package:camera/camera.dart';
 
 class CameraUtils {
-  CameraUtils._internal();
+  static Future<CameraDescription> getCamera() async {
+    final List<CameraDescription> cameras = await availableCameras();
+    final CameraDescription firstCamera = cameras.first;
 
-  static List<CameraDescription> cameras;
-
-  static Future<List<CameraDescription>> init() async {
-    if (cameras == null) {
-      cameras = await getAvailableCameras();
-    }
-    return cameras;
+    return firstCamera;
   }
-
-  static Future<List<CameraDescription>> getAvailableCameras() =>
-      availableCameras();
 }

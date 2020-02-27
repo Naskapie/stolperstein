@@ -1,19 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:camera/camera.dart';
 
-import 'routes.dart';
+import 'pages/camera.dart';
+import 'pages/credits.dart';
+import 'pages/home.dart';
+import 'pages/profile.dart';
+import 'pages/settings.dart';
 import 'theme/style.dart';
 
-void main() => runApp(MyApp());
+Future<void> main() async {
+  // Ensure that plugin services are initialized so that `availableCameras()`
+  // can be called before `runApp()`
+  WidgetsFlutterBinding.ensureInitialized();
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Stolperstein',
+  // Obtain a list of the available cameras on the device.
+  final cameras = await availableCameras();
+
+  // Get a specific camera from the list of available cameras.
+  final firstCamera = cameras.first;
+
+  runApp(
+    MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: appTheme(),
       initialRoute: '/',
-      routes: routes,
-    );
-  }
+      routes: <String, WidgetBuilder>{
+        '/': (BuildContext context) => MyHomePage(),
+        '/camera': (BuildContext context) => CameraPage(
+              camera: firstCamera,
+            ),
+        '/profile': (BuildContext context) => ProfilePage(),
+        '/settings': (BuildContext context) => SettingsPage(),
+        '/credits': (BuildContext context) => CreditsPage()
+      },
+    ),
+  );
 }
