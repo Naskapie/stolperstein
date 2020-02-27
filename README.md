@@ -1,16 +1,31 @@
-# Stolperstein
+# Stolperstein App
+
+![stolperstein](./images/stolperstein.png "Stolperstein")
+<br />
 
 A new Flutter project.
 
+## Built With
+
+- **Flutter Packages**
+  - [camera](https://pub.dartlang.org/packages/camera)
+  - [path_provider](https://pub.dartlang.org/packages/path_provider)
+  - [url_launcher](https://pub.dartlang.org/packages/url_launcher)
+
+
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+### Building from Source
 
-A few resources to get you started if this is your first Flutter project:
+Clone the repository
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+```bash
+git clone https://github.com/Naskapie/stolperstein
+cd Stolperstein
+```
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Run Stolperstein
+
+```bash
+flutter run
+```

@@ -5,6 +5,7 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart' show join;
 import 'package:path_provider/path_provider.dart';
+import 'package:Stolperstein/pages/image_review_page.dart';
 
 class CameraPage extends StatefulWidget {
   const CameraPage({
@@ -29,9 +30,6 @@ class _CameraPageState extends State<CameraPage> {
     super.initState();
 
     _controller = CameraController(widget.camera, ResolutionPreset.medium);
-    print('CAMERA PRINT ${widget.camera}');
-    print('CAMERA PRINT $_controller}');
-
     _initializeControllerFuture = _controller.initialize();
   }
 
@@ -49,7 +47,6 @@ class _CameraPageState extends State<CameraPage> {
       // Future Builder lets program continue other operation
       //  while current operations is being performed.
       // its calles the the future function to wait for the result
-
       body: FutureBuilder<void>(
         future: _initializeControllerFuture,
         // The Builder function uses the context object of the
@@ -67,57 +64,50 @@ class _CameraPageState extends State<CameraPage> {
         },
       ),
 
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.camera_alt),
-        // Provide an onPressed callback.
-        onPressed: () async {
-          // Take the Picture in a try / catch block. If anything goes wrong,
-          // catch the error.
-          try {
-            // Ensure that the camera is initialized.
-            await _initializeControllerFuture;
+      floatingActionButton: Container(
+        width: 72.0,
+        height: 72.0,
+        child: FloatingActionButton(
+          backgroundColor: Colors.white30,
+          shape:
+              CircleBorder(side: BorderSide(color: Colors.white, width: 2.5)),
+          elevation: 2.0,
+          onPressed: () async {
+            // Take the Picture in a try / catch block. If anything goes wrong,
+            // catch the error.
+            try {
+              // Ensure that the camera is initialized.
+              await _initializeControllerFuture;
 
-            // Construct the path where the image should be saved using the
-            // pattern package.
-            final String path = join(
-              // Store the picture in the temp directory.
-              // Find the temp directory using the `path_provider` plugin.
-              (await getTemporaryDirectory()).path,
-              '${DateTime.now()}.png',
-            );
+              // Construct the path where the image should be saved using the
+              // pattern package.
+              final String path = join(
+                // Store the picture in the temp directory.
+                // Find the temp directory using the `path_provider` plugin.
+                (await getTemporaryDirectory()).path,
+                '${DateTime.now()}.png',
+              );
+              // Attempt to take a picture and log where it's been saved.
+              await _controller.takePicture(path);
 
-            // Attempt to take a picture and log where it's been saved.
-            await _controller.takePicture(path);
-
-            // If the picture was taken, display it on a new screen.
-            // Navigator.push(
-            //   context,
-            //   MaterialPageRoute(
-            //     builder: (context) => DisplayPictureScreen(imagePath: path),
-            //   ),
-            // );
-          } catch (e) {
-            // If an error occurs, log the error to the console.
-            print(e);
-          }
-        },
+              // If the picture was taken, display it on a new screen.
+              Navigator.push(
+                context,
+                MaterialPageRoute<void>(
+                  builder: (BuildContext context) =>
+                      ImageReviewPage(imagePath: path),
+                ),
+              );
+            } catch (e) {
+              // If an error occurs, log the error to the console.
+              print(e);
+            }
+          },
+          tooltip: 'Increment',
+          child: Icon(Icons.lens, color: Colors.white, size: 72),
+        ),
       ),
-    );
-  }
-}
-
-// A widget that displays the picture taken by the user.
-class DisplayPictureScreen extends StatelessWidget {
-  const DisplayPictureScreen({Key key, this.imagePath}) : super(key: key);
-  final String imagePath;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Display the Picture')),
-      // The image is stored as a file on the device. Use the `Image.file`
-      // constructor with the given path to display the image.
-      body: Image.file(File(imagePath)),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
