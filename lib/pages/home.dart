@@ -21,11 +21,11 @@ class _MyHomePageState extends State<MyHomePage> {
             itemBuilder: (BuildContext context) => [
               PopupMenuItem(
                 value: 1,
-                child: Text("Default"),
+                child: Text('Default'),
               ),
               PopupMenuItem(
                 value: 2,
-                child: Text("Satellite"),
+                child: Text('Satellite'),
               ),
             ],
           ),
