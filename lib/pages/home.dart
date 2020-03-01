@@ -12,7 +12,12 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      backgroundColor: Colors.red,
       appBar: AppBar(
+        // backgroundColor: Color(0x44000000),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
         title: const Text('Stolperstein'),
         actions: <Widget>[
           PopupMenuButton(
@@ -47,6 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 print('tip');
               },
               child: Icon(Icons.my_location),
+              backgroundColor: Colors.white,
             ),
           ),
           FloatingActionButton(
@@ -55,6 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Navigator.pushNamed(context, '/camera');
             },
             child: Icon(Icons.photo_camera),
+            backgroundColor: Colors.white,
           ),
         ],
       ),
