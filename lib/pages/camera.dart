@@ -5,7 +5,7 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart' show join;
 import 'package:path_provider/path_provider.dart';
-import 'package:Stolperstein/pages/image_review_page.dart';
+import 'package:Stolperstein/pages/image_review.dart';
 import 'package:image_picker/image_picker.dart';
 
 class CameraPage extends StatefulWidget {
@@ -28,10 +28,6 @@ class _CameraPageState extends State<CameraPage> {
 
   Future getImage() async {
     var imageFile = await ImagePicker.pickImage(source: ImageSource.gallery);
-
-    // setState(() {
-    //   _imageFile = imageFile.path;
-    // });
 
     await Navigator.push(
       context,
@@ -64,6 +60,18 @@ class _CameraPageState extends State<CameraPage> {
       // Future Builder lets program continue other operation
       //  while current operations is being performed.
       // its calles the the future function to wait for the result
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        iconTheme: IconThemeData(color: Colors.white),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.insert_photo, color: Colors.white),
+            onPressed: getImage,
+          ),
+        ],
+      ),
       body: FutureBuilder<void>(
         future: _initializeControllerFuture,
         // The Builder function uses the context object of the
@@ -74,32 +82,6 @@ class _CameraPageState extends State<CameraPage> {
             // If the Future is complete, display the review
             return Stack(children: <Widget>[
               CameraPreview(_controller),
-              Align(
-                alignment: Alignment.topLeft,
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 44.0, left: 24),
-                  child: IconButton(
-                    icon: Icon(
-                      Icons.flash_off,
-                      color: Colors.white,
-                    ),
-                    onPressed: () {},
-                  ),
-                ),
-              ),
-              Align(
-                alignment: Alignment.topRight,
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 44.0, right: 24),
-                  child: IconButton(
-                    icon: Icon(
-                      Icons.insert_photo,
-                      color: Colors.white,
-                    ),
-                    onPressed: getImage,
-                  ),
-                ),
-              ),
             ]);
           } else {
             return const Center(child: CircularProgressIndicator());
