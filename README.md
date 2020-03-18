@@ -7,7 +7,12 @@ Pattern Recognition App for the detection of "Stolpersteine"
 
 ## Screenshots
 
-<img src="./images/screenshot_map.png" width="200" /><img src="./images/screenshot_camera.png" width="200" /><img src="./images/screenshot_ocr.png" width="200" />
+<!-- <img src="./media/animated.gif" width="200" /> -->
+<img src="./images/screenshot_map.png" width="200" />
+<img src="./images/screenshot_camera.png" width="200" />
+<img src="./images/screenshot_ocr.png" width="200" />
+<img src="./images/screenshot_drawer.png" width="200" />
+
 
 ## Built With
 
