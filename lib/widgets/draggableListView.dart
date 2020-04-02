@@ -12,229 +12,64 @@ class DraggableSearchableListView extends StatefulWidget {
 
 class _DraggableSearchableListViewState
     extends State<DraggableSearchableListView> {
-  // final TextEditingController searchTextController = TextEditingController();
-  // final ValueNotifier<bool> searchTextCloseButtonVisibility =
-  //     ValueNotifier<bool>(false);
-  // final ValueNotifier<bool> searchFieldVisibility = ValueNotifier<bool>(false);
   @override
   void dispose() {
-    // searchTextController.dispose();
-    // searchTextCloseButtonVisibility.dispose();
-    // searchFieldVisibility.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return
-        // NotificationListener<DraggableScrollableNotification>(
-        //   onNotification: (notification) {
-        //     if (notification.extent == 1.0) {
-        //       searchFieldVisibility.value = true;
-        //     } else {
-        //       searchFieldVisibility.value = false;
-        //     }
-        //     return true;
-        //   },
-        //   child:
-        //   DraggableScrollableActuator(
-        //     child: Stack(
-        //       children: <Widget>[
-
-        DraggableScrollableSheet(
+    return DraggableScrollableSheet(
       initialChildSize: 0.30,
       minChildSize: 0.15,
       maxChildSize: 1.0,
       builder: (BuildContext context, ScrollController scrollController) {
-        return MaterialApp(
-          child: Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(10.0),
-                topRight: Radius.circular(10.0),
-              ),
+        return Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(10.0),
+              topRight: Radius.circular(10.0),
             ),
-            child: ListView.builder(
-              controller: scrollController,
+          ),
+          child: ListView.builder(
+            controller: scrollController,
 
-              ///we have 25 rows plus one header row.                               itemCount: 25 + 1,
-              itemBuilder: (BuildContext context, int index) {
-                if (index == 0) {
-                  return Container(
-                    child: Column(
-                      children: <Widget>[
-                        Align(
-                          alignment: Alignment.topLeft,
-                          child: Padding(
-                            padding: EdgeInsets.only(
-                              top: 0.0,
-                              left: 24.0,
-                              right: 24.0,
-                            ),
-                            child: Text(
-                              'Related resultes',
-                              style: Theme.of(context).textTheme.headline6,
-                            ),
+            ///we have 25 rows plus one header row.                               itemCount: 25 + 1,
+            itemBuilder: (BuildContext context, int index) {
+              if (index == 0) {
+                return Container(
+                  child: Column(
+                    children: <Widget>[
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                            top: 0.0,
+                            left: 24.0,
+                            right: 24.0,
+                          ),
+                          child: Text(
+                            'Related resultes',
+                            style: Theme.of(context).textTheme.headline6,
                           ),
                         ),
-                        SizedBox(
-                          height: 8.0,
-                        ),
-                        // Divider(color: Colors.grey),
-                      ],
-                    ),
-                  );
-                }
-                return Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16.0),
-                    child: ListTile(title: Text('Zeile $index:')));
-              },
-            ),
+                      ),
+                      SizedBox(
+                        height: 8.0,
+                      ),
+                      // Divider(color: Colors.grey),
+                    ],
+                  ),
+                );
+              }
+              return Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16.0),
+                  child: ListTile(title: Text('Zeile $index:')));
+            },
           ),
         );
       },
     );
-    // Positioned(
-    //   left: 0.0,
-    //   top: 0.0,
-    //   right: 0.0,
-    //   child: ValueListenableBuilder<bool>(
-    //       valueListenable: searchFieldVisibility,
-    //       builder: (context, value, child) {
-    //         return value
-    //             ? PreferredSize(
-    //                 preferredSize: Size.fromHeight(56.0),
-    //                 child: Container(
-    //                   decoration: BoxDecoration(
-    //                     border: Border(
-    //                       bottom: BorderSide(
-    //                           width: 1.0,
-    //                           color: Theme.of(context).dividerColor),
-    //                     ),
-    //                     color: Theme.of(context).colorScheme.surface,
-    //                   ),
-    //                   child: SearchBar(
-    //                     closeButtonVisibility:
-    //                         searchTextCloseButtonVisibility,
-    //                     textEditingController: searchTextController,
-    //                     onClose: () {
-    //                       searchFieldVisibility.value = false;
-    //                       DraggableScrollableActuator.reset(context);
-    //                     },
-    //                     onSearchSubmit: (String value) {
-    //                       ///submit search query to your business logic component
-    //                     },
-    //                   ),
-    //                 ),
-    //               )
-    //             : Container();
-    //       }),
-    // ),
-    // ],
-    // ),
-    // ),
-    // );
   }
 }
-
-// class SearchBar extends StatelessWidget {
-//   final TextEditingController textEditingController;
-//   final ValueNotifier<bool> closeButtonVisibility;
-//   final ValueChanged<String> onSearchSubmit;
-//   final VoidCallback onClose;
-
-//   const SearchBar({
-//     Key key,
-//     @required this.textEditingController,
-//     @required this.closeButtonVisibility,
-//     @required this.onSearchSubmit,
-//     @required this.onClose,
-//   }) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     final theme = Theme.of(context);
-//     return Container(
-//       child: Padding(
-//         padding: EdgeInsets.symmetric(horizontal: 0),
-//         child: Row(
-//           children: <Widget>[
-//             SizedBox(
-//               height: 56.0,
-//               width: 56.0,
-//               child: Material(
-//                 type: MaterialType.transparency,
-//                 child: InkWell(
-//                   child: Icon(
-//                     Icons.arrow_back,
-//                     color: theme.textTheme.caption.color,
-//                   ),
-//                   onTap: () {
-//                     FocusScope.of(context).unfocus();
-//                     textEditingController.clear();
-//                     closeButtonVisibility.value = false;
-//                     onClose();
-//                   },
-//                 ),
-//               ),
-//             ),
-//             SizedBox(
-//               width: 16.0,
-//             ),
-//             Expanded(
-//               child: TextFormField(
-//                 onChanged: (value) {
-//                   if (value != null && value.length > 0) {
-//                     closeButtonVisibility.value = true;
-//                   } else {
-//                     closeButtonVisibility.value = false;
-//                   }
-//                 },
-//                 onFieldSubmitted: (value) {
-//                   FocusScope.of(context).unfocus();
-//                   onSearchSubmit(value);
-//                 },
-//                 keyboardType: TextInputType.text,
-//                 textInputAction: TextInputAction.search,
-//                 textCapitalization: TextCapitalization.none,
-//                 textAlignVertical: TextAlignVertical.center,
-//                 textAlign: TextAlign.left,
-//                 maxLines: 1,
-//                 controller: textEditingController,
-//                 decoration: InputDecoration(
-//                   isDense: true,
-//                   border: InputBorder.none,
-//                   hintText: 'Search here',
-//                 ),
-//               ),
-//             ),
-//             ValueListenableBuilder<bool>(
-//                 valueListenable: closeButtonVisibility,
-//                 builder: (context, value, child) {
-//                   return value
-//                       ? SizedBox(
-//                           width: 56.0,
-//                           height: 56.0,
-//                           child: Material(
-//                             type: MaterialType.transparency,
-//                             child: InkWell(
-//                               child: Icon(
-//                                 Icons.close,
-//                                 color: theme.textTheme.caption.color,
-//                               ),
-//                               onTap: () {
-//                                 closeButtonVisibility.value = false;
-//                                 textEditingController.clear();
-//                               },
-//                             ),
-//                           ),
-//                         )
-//                       : Container();
-//                 })
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
