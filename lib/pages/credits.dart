@@ -15,7 +15,7 @@ class CreditsPage extends StatelessWidget {
               leading: Icon(Icons.map),
               title: Text('OpenStreetMap contributors'),
               onTap: () async {
-                const String url = 'https://www.openstreetmap.org/copyright';
+                const url = 'https://www.openstreetmap.org/copyright';
                 if (await canLaunch(url)) {
                   await launch(
                     url,
@@ -41,7 +41,7 @@ class CreditsPage extends StatelessWidget {
               leading: Icon(Icons.spa),
               title: const Text('JavaScript library Leaflet'),
               onTap: () async {
-                const String url = 'https://leafletjs.com/';
+                const url = 'https://leafletjs.com/';
                 if (await canLaunch(url)) {
                   await launch(
                     url,

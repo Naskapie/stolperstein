@@ -30,8 +30,8 @@ class _MapWidgetState extends State<MapWidget> {
         context: context,
         mapController: _mapController,
         markers: _markers,
-        onLocationUpdate: (LatLng pos) =>
-            print('onLocationUpdate ${pos.toString()}'),
+        // onLocationUpdate: (LatLng pos) =>
+        //     print('onLocationUpdate ${pos.toString()}'),
         updateMapLocationOnPositionChange: false,
         showMoveToCurrentLocationFloatingActionButton: false,
         zoomToCurrentLocationOnLoad: true,
@@ -60,7 +60,6 @@ class _MapWidgetState extends State<MapWidget> {
       ),
     );
   }
-
-  @override
-  void dispose() => _markerlocationStream.close();
+  // @override
+  // void dispose() => _markerlocationStream.close();
 }

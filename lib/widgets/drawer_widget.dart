@@ -44,7 +44,7 @@ class NavDrawer extends StatelessWidget {
                   leading: Icon(Icons.crop_square),
                   title: const Text('About Stolpersteine'),
                   onTap: () async {
-                    const String url = 'http://www.stolpersteine.eu/en/';
+                    const url = 'http://www.stolpersteine.eu/en/';
                     if (await canLaunch(url)) {
                       await launch(
                         url,
@@ -63,7 +63,7 @@ class NavDrawer extends StatelessWidget {
                 leading: Icon(Icons.exit_to_app),
                 title: const Text('Authorise OSM access'),
                 onTap: () async {
-                  const String url = 'https://www.openstreetmap.org/login';
+                  const url = 'https://www.openstreetmap.org/login';
                   if (await canLaunch(url)) {
                     await launch(
                       url,
