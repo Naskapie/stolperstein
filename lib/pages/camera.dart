@@ -8,10 +8,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:Stolperstein/pages/image_review.dart';
 
 class CameraPage extends StatefulWidget {
-  const CameraPage({
-    Key key,
-    @required this.camera,
-  }) : super(key: key);
+  const CameraPage({Key key, @required this.camera}) : super(key: key);
 
   final CameraDescription camera;
 
