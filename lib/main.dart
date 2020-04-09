@@ -25,13 +25,15 @@ Future<void> main() async {
       theme: appTheme(),
       initialRoute: '/',
       routes: <String, WidgetBuilder>{
-        '/': (BuildContext context) => MyHomePage(),
-        '/camera': (BuildContext context) => CameraPage(
+        '/': (context) => MyHomePage(
               camera: firstCamera,
             ),
-        '/profile': (BuildContext context) => ProfilePage(),
-        '/settings': (BuildContext context) => SettingsPage(),
-        '/credits': (BuildContext context) => CreditsPage()
+        '/camera': (context) => CameraPage(
+              camera: firstCamera,
+            ),
+        '/profile': (context) => ProfilePage(),
+        '/settings': (context) => SettingsPage(),
+        '/credits': (context) => CreditsPage()
       },
     ),
   );

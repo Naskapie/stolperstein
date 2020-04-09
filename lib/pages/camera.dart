@@ -28,8 +28,7 @@ class _CameraPageState extends State<CameraPage> {
     await Navigator.push(
       context,
       MaterialPageRoute<void>(
-        builder: (BuildContext context) =>
-            DisplayPictureScreen(imagePath: imageFile.path),
+        builder: (context) => DisplayPictureScreen(imagePath: imageFile.path),
       ),
     );
   }

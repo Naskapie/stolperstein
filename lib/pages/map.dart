@@ -6,12 +6,12 @@ import 'package:latlong/latlong.dart';
 import 'package:user_location/user_location.dart';
 import 'package:Stolperstein/services/config.dart';
 
-class MapWidget extends StatefulWidget {
+class MapPage extends StatefulWidget {
   @override
-  _MapWidgetState createState() => _MapWidgetState();
+  _MapPageState createState() => _MapPageState();
 }
 
-class _MapWidgetState extends State<MapWidget> {
+class _MapPageState extends State<MapPage> {
   final MapController _mapController = MapController();
   final List<Marker> _markers = [];
   final StreamController<LatLng> _markerlocationStream =
@@ -40,6 +40,29 @@ class _MapWidgetState extends State<MapWidget> {
         verbose: false);
 
     return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        title: Text('Stolperstein'),
+        actions: <Widget>[
+          PopupMenuButton(
+            icon: Icon(Icons.layers),
+            tooltip: 'Map types',
+            itemBuilder: (context) => [
+              PopupMenuItem(
+                value: 1,
+                child: Text('Default'),
+              ),
+              PopupMenuItem(
+                value: 2,
+                child: Text('Satellite'),
+              ),
+            ],
+          ),
+        ],
+      ),
+      extendBodyBehindAppBar: true,
       body: FlutterMap(
         options: MapOptions(
           center: LatLng(53.55, 9.99),
@@ -57,6 +80,18 @@ class _MapWidgetState extends State<MapWidget> {
           userLocationOptions
         ],
         mapController: _mapController,
+      ),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(bottom: 10),
+        child: FloatingActionButton(
+          tooltip: 'Location',
+          heroTag: 'btn1',
+          onPressed: () {
+            print('tip');
+          },
+          child: Icon(Icons.my_location),
+          backgroundColor: Colors.white,
+        ),
       ),
     );
   }

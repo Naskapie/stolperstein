@@ -1,69 +1,73 @@
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
-import 'package:Stolperstein/widgets/map_widget.dart';
-import 'package:Stolperstein/widgets/drawer_widget.dart';
+import 'camera.dart';
+import 'map.dart';
+import 'profile.dart';
 
 class MyHomePage extends StatefulWidget {
+  const MyHomePage({Key key, @required this.camera}) : super(key: key);
+
+  final CameraDescription camera;
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  int _selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(
+      () {
+        _selectedIndex = index;
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBodyBehindAppBar: true,
-      backgroundColor: Colors.red,
-      appBar: AppBar(
-        // backgroundColor: Color(0x44000000),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        title: const Text('Stolperstein'),
-        actions: <Widget>[
-          PopupMenuButton(
-            icon: Icon(Icons.layers),
-            tooltip: 'Map types',
-            itemBuilder: (BuildContext context) => [
-              PopupMenuItem(
-                value: 1,
-                child: Text('Default'),
+      body: Stack(
+        children: [
+          IndexedStack(
+            index: _selectedIndex,
+            children: <Widget>[
+              MapPage(),
+              Navigator(
+                onGenerateRoute: (route) => MaterialPageRoute<void>(
+                  settings: route,
+                  builder: (context) => CameraPage(
+                    camera: widget.camera,
+                  ),
+                ),
               ),
-              PopupMenuItem(
-                value: 2,
-                child: Text('Satellite'),
-              ),
+              ProfilePage(),
             ],
           ),
         ],
       ),
-      drawer: NavDrawer(),
-      body: Center(
-        child: MapWidget(),
-      ),
-      floatingActionButton: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(bottom: 10),
-            child: FloatingActionButton(
-              tooltip: 'Location',
-              heroTag: 'btn1',
-              onPressed: () {
-                print('tip');
-              },
-              child: Icon(Icons.my_location),
-              backgroundColor: Colors.white,
-            ),
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        elevation: 50,
+        showSelectedLabels: true,
+        showUnselectedLabels: false,
+        selectedItemColor: Colors.black,
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.map),
+            title: Text('Explore'),
           ),
-          FloatingActionButton(
-            heroTag: 'btn2',
-            onPressed: () {
-              Navigator.pushNamed(context, '/camera');
-            },
-            child: Icon(Icons.photo_camera),
-            backgroundColor: Colors.white,
+          BottomNavigationBarItem(
+            icon: Icon(Icons.control_point),
+            title: Text('Contribute'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.file_upload),
+            title: Text('Uploads'),
           ),
         ],
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
       ),
     );
   }

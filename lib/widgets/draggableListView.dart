@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class DraggableSearchableListView extends StatefulWidget {
-  const DraggableSearchableListView({
-    Key key,
-  }) : super(key: key);
+  const DraggableSearchableListView({Key key, this.text}) : super(key: key);
+
+  final String text;
 
   @override
   _DraggableSearchableListViewState createState() =>
@@ -20,10 +20,10 @@ class _DraggableSearchableListViewState
   @override
   Widget build(BuildContext context) {
     return DraggableScrollableSheet(
-      initialChildSize: 0.30,
+      initialChildSize: 0.20,
       minChildSize: 0.15,
       maxChildSize: 1.0,
-      builder: (BuildContext context, ScrollController scrollController) {
+      builder: (context, scrollController) {
         return Container(
           decoration: BoxDecoration(
             color: Colors.white,
@@ -34,8 +34,7 @@ class _DraggableSearchableListViewState
           ),
           child: ListView.builder(
             controller: scrollController,
-
-            ///we have 25 rows plus one header row.                               itemCount: 25 + 1,
+            itemCount: 25 + 1,
             itemBuilder: (BuildContext context, int index) {
               if (index == 0) {
                 return Container(
@@ -50,7 +49,7 @@ class _DraggableSearchableListViewState
                             right: 24.0,
                           ),
                           child: Text(
-                            'Related resultes',
+                            'Looking for results...',
                             style: Theme.of(context).textTheme.headline6,
                           ),
                         ),

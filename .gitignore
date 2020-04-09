@@ -83,3 +83,4 @@ lib/pages/picture_scanner/picture_scanner.dart
 android/key.properties
 android/app/key.jks
 lib/widgets/bottom_sheet.dart
+lib/widgets/bottomNavigationBar_widget.dart
