@@ -1,7 +1,5 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
-
 import 'package:Stolperstein/widgets/draggableListView.dart';
 import 'package:Stolperstein/services/picture_scan.dart';
 

@@ -1,14 +1,26 @@
-# Stolperstein App
-
 ![stolperstein](./images/stolperstein_mini.png "Stolperstein")
+
+# Stolperstein App
+[![Made-with-Flutter](https://img.shields.io/badge/Made%20with-Flutter-5fc9f8.svg)](https://flutter.dev/)
+[![Made-with-Dart](https://img.shields.io/badge/Made%20with-Dart-13589c.svg)](https://dart.dev/)
+[![GitHub issues](https://img.shields.io/github/issues/naskapie/stolperstein)](https://github.com/Naskapie/stolperstein/issues)
+<!-- [![GitHub stars](https://img.shields.io/github/stars/naskapie/stolperstein)](https://github.com/Naskapie/stolperstein/stargazers) -->
+<!-- [![GitHub license](https://img.shields.io/github/license/naskapie/stolperstein)](https://github.com/naskapie/stolperstein/blob/master/LICENSE) -->
+
 <br />
 
 Pattern Recognition App for the detection of "Stolpersteine"
 
 ## Screenshots
 
-<!-- <img src="./media/animated.gif" width="200" /> -->
-<img src="./images/screenshot_map.png" width="200" /><img src="./images/screenshot_camera.png" width="200" /><img src="./images/screenshot_ocr.png" width="200" /><img src="./images/screenshot_drawer.png" width="200" />
+<table>
+    <tr>
+        <td><img src="./images/screenshot_map.png" width="200" /></td>
+        <td><img src="./images/screenshot_camera.png" width="200" /></td>
+        <td><img src="./images/screenshot_ocr.png" width="200" /></td>
+        <td><img src="./images/screenshot_drawer.png" width="200" /></td>
+    </tr>
+</table>
 
 
 ## Built With

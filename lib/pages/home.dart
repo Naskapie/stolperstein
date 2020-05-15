@@ -16,6 +16,10 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex = 0;
 
+  static const int explore = 0;
+  static const int contribute = 1;
+  static const int uploads = 2;
+
   void _onItemTapped(int index) {
     setState(
       () {
@@ -46,7 +50,11 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
       ),
-      bottomNavigationBar: BottomNavigationBar(
+      bottomNavigationBar:
+          // Visibility(
+          //   visible: _selectedIndex != contribute,
+          // child:
+          BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         elevation: 50,
         showSelectedLabels: true,
@@ -69,6 +77,7 @@ class _MyHomePageState extends State<MyHomePage> {
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
       ),
+      // ),
     );
   }
 }

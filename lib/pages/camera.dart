@@ -38,7 +38,11 @@ class _CameraPageState extends State<CameraPage> {
   void initState() {
     super.initState();
 
-    _controller = CameraController(widget.camera, ResolutionPreset.medium);
+    _controller = CameraController(
+      widget.camera,
+      ResolutionPreset.medium,
+      enableAudio: false,
+    );
     _initializeControllerFuture = _controller.initialize();
   }
 
@@ -71,7 +75,7 @@ class _CameraPageState extends State<CameraPage> {
         future: _initializeControllerFuture,
         // The Builder function uses the context object of the
         // widget that the Builder widget is in.
-        builder: (BuildContext context, AsyncSnapshot<void> snapshot) {
+        builder: (context, AsyncSnapshot<void> snapshot) {
           // builder Snapshot has three states (none/waiting/done)
           if (snapshot.connectionState == ConnectionState.done) {
             // If the Future is complete, display the review
