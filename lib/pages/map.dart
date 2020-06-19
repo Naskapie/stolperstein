@@ -19,6 +19,9 @@ class _MapPageState extends State<MapPage> {
   UserLocationOptions userLocationOptions;
 
   @override
+  void dispose() => _markerlocationStream.close();
+
+  @override
   Widget build(BuildContext context) {
     _markerlocationStream.stream.listen((LatLng onData) {});
 
@@ -95,6 +98,4 @@ class _MapPageState extends State<MapPage> {
       ),
     );
   }
-  // @override
-  // void dispose() => _markerlocationStream.close();
 }

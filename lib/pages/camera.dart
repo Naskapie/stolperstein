@@ -18,19 +18,26 @@ class CameraPage extends StatefulWidget {
 
 class _CameraPageState extends State<CameraPage> {
   final isSelected = false;
+  dynamic _pickImageError;
+
   CameraController _controller;
-  // Future operations take time to perform and return the result later
-  // Return Values of the Future(potential value) cannot be used
+  final ImagePicker _picker = ImagePicker();
 
   Future getImage() async {
-    var imageFile = await ImagePicker.pickImage(source: ImageSource.gallery);
+    try {
+      var imageFile = await _picker.getImage(source: ImageSource.gallery);
 
-    await Navigator.push(
-      context,
-      MaterialPageRoute<void>(
-        builder: (context) => DisplayPictureScreen(imagePath: imageFile.path),
-      ),
-    );
+      await Navigator.push(
+        context,
+        MaterialPageRoute<void>(
+          builder: (context) => DisplayPictureScreen(imagePath: imageFile.path),
+        ),
+      );
+    } catch (e) {
+      setState(() {
+        _pickImageError = e;
+      });
+    }
   }
 
   Future<void> _initializeControllerFuture;
